@@ -1,0 +1,101 @@
+/* Basic Reset */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; /* Background color of the page */
+
+}
+
+.authform {
+    background-color: #fff; /* Form background */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    width: 300px;
+}
+
+.authform h2 {
+    text-align: center;
+    color: #333; /* Text color */
+    margin-bottom: 20px;
+}
+
+.authFrominput {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Ensures padding is included in the width */
+    font-size: 14px;
+}
+
+.authFrominput:focus {
+    border-color: #007BFF; /* Change border color on focus */
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.authform input[type="submit"] {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%;
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.authform input[type="submit"]:hover {
+    background-color: #0056b3; /* Darken button color on hover */
+}
+
+.authform hr {
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 20px 0;
+}
+.MainAdminAuthBody{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+}
+.rightSideAuthContainer{
+    width:  60%;
+    display: flex;
+    justify-content: flex-start;
+    align-items:center;
+    position: relative;
+}
+.leftSideAuthContainer{
+    width:  40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.logoContainer{
+    height: 500px;
+    width: 500px;
+    object-fit: contain;
+}
+.logoContainer img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+.ErrorMessageContainer{
+    padding: 5px;
+    background-color: red;
+    color: aliceblue;
+    border-radius: 10px;
+    display: inline;
+    font-size: small;
+    border: 1px solid black;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
