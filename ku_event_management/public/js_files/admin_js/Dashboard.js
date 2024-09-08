@@ -10,9 +10,10 @@ const usersRegisteredForEventContainer = document.getElementById('usersRegistere
 const eventSuccessMsgContainer = document.getElementById('eventSuccessMsgContainer')
 const eventSuccessmsg = document.getElementById('eventSuccessmsg')
 const moreEventsOptionsForm = document.getElementById('moreEventsOptionsForm')
-const eventSearchForm = document.getElementById('eventSearchForm')
 const eventErrorMsgContainer = document.getElementById('eventErrorMsgContainer');
 const eventErrormsg = document.getElementById('eventErrormsg')
+const eventSearchBtn = document.getElementById('eventSearchBtn');
+const gotToUsersPageBtn = document.getElementById('gotToUsersPageBtn')
 function logout(){
     window.location.href = "/admin/logout";
 }
@@ -76,9 +77,58 @@ const deleteEventBtn = ()=>{
     }
  }
  eventSuccessmsgFunction()
- const searchEvent = ()=>{
-    eventSearchForm.setAttribute("method","POST")
-    eventSearchForm.setAttribute("action","/admin/event/searchEvent")
-    eventSearchForm.submit()
- }
+ eventErrormsgFunction()
+
+ const searchEvent = () => {
+    const eventSearchForm = document.getElementById('eventSearchForm');
+    eventSearchForm.setAttribute("action", "/admin/event/searchEvent");
+    eventSearchForm.setAttribute("method", "POST");
+    eventSearchForm.submit();
+};
  
+eventSearchBtn.addEventListener('click',searchEvent)
+
+function gotToUsersPage (){
+    window.location.href = "/admin/users"
+}
+function suspendAccount(button){
+  const userId = button.getAttribute("data-user-id")
+  const suspendAccountform = document.getElementById('suspendAccountform')
+  suspendAccountform.setAttribute("action",`/admin/users/suspendaccount/${userId}`)
+  suspendAccountform.setAttribute('method',"POST")
+  suspendAccountform.submit()
+}
+function activateAccount(button){
+    const userId = button.getAttribute("data-user-id")
+    const suspendAccountform = document.getElementById('activateAccountForm')
+    suspendAccountform.setAttribute("action",`/admin/users/activateaccount/${userId}`)
+    suspendAccountform.setAttribute('method',"POST")
+    suspendAccountform.submit()
+}
+
+function showSuccessAlertDialog(){
+    const successDialogAlert = document.getElementById('successDialogAlert')
+const successDialogMessage = document.getElementById('successDialogMessage');
+    if(successDialogMessage.textContent != ""){
+        successDialogAlert.style.display = "block";
+        setTimeout(()=>{
+            successDialogAlert.style.display = "none";
+        },4000)
+    }else{
+        successDialogAlert.style.display = "none";
+    }
+}
+function showErrorAlertDialog(){
+    const errorDialogAlert = document.getElementById('errorDialogAlert')
+const ErrorDialogMessage = document.getElementById('ErrorDialogMessage');
+    if(ErrorDialogMessage.textContent != ""){
+        errorDialogAlert.style.display = "block";
+        setTimeout(()=>{
+            errorDialogAlert.style.display = "none";
+        },4000)
+    }else{
+        errorDialogAlert.style.display = "none";
+    }
+}
+showSuccessAlertDialog()
+showErrorAlertDialog()

@@ -31,9 +31,32 @@
         </div>
     </form>
 
+
 </div>
     <div class="usersRegisteredForEventContainer" id="usersRegisteredForEventContainer">
-        <p>This is where  the admin will see everybody who has registred for this event</p>
+        <table class="styled-table">
+            <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>Event Name</th>
+                    <th>Registration Time</th>
+                    <th>Registration Status</th>
+                    <th>Entry Updated At</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($userList as $user)
+                <tr>
+                    <td>{{ $user->email }}</td>
+                    <td>{{ $user->event_Name }}</td>
+                    <td>{{ $user->registration_time }}</td>
+                    <td>{{ $user->registaration_status }}</td>
+                    <td>{{ $user->updated_at }}</td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+        
     </div>
 </div>
 @endsection 

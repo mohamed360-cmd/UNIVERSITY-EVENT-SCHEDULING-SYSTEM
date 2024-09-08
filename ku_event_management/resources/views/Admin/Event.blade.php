@@ -2,9 +2,9 @@
 <div class="MainEventContainer">
         @section('navContent')
         <h3>Kenyata University Events</h3>
-        <form class="SearchContainer" id="eventSearchForm">
-            <input placeholder="Search Event by name" type="text" name="searchEventName"/>
-            <button class="eventSearchBtn" onclick="searchEvent()"> Search</button>
+        <form class="SearchContainer" id="eventSearchForm" >
+            <input placeholder="Search Event by name" type="text" name="searchEventName" />
+            <button class="eventSearchBtn" type="button" id="eventSearchBtn">Search</button>
         </form>
         <div class="eventFilterContainer">
             <button class="eventFilterBtn">All Events</button>

@@ -1,0 +1,294 @@
+/* Reset default margin and padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Navbar Styling */
+.NavBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px ;
+    background: linear-gradient(135deg, #00796b, #48a999);
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Logo Container */
+.logoContainer img {
+    height: 50px;
+    width: auto;
+}
+
+/* Navbar Title */
+.NavBar p {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+/* User Auth Buttons Container */
+.user-navAuthBtnsContiner {
+    display: flex;
+    gap: 10px;
+}
+
+/* User Auth Buttons */
+.userAuthBtns {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.userLoginBtn {
+    background-color: #ffffff;
+    color: #00796b;
+}
+
+.userRegisterBtn {
+    background-color: #ffffff;
+    color: #00796b;
+}
+
+.userAuthBtns:hover {
+    background-color: #48a999;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Main Content Container */
+.mainContentContainer {
+
+    margin: 20px auto;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow-y: hidden;
+    height: 80vh;
+}
+/* Main Events Display Container */
+.mainEventsDisplayContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    background-color: #f0f4f8;
+}
+
+/* Event Container */
+.event-container {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 320px;
+    margin: 10px;
+    padding: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+/* Hover Effect for Event Container */
+.event-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+.HomelogoContainer{
+    position: absolute;
+    top: 0px;
+    right: 5px;
+    z-index: -9px;
+}
+/* Logo Container */
+.HomelogoContainer img {
+    height: 60px;
+    width: auto;
+    margin-bottom: 15px;
+}
+
+/* Event Name */
+.event-name {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* Event Details */
+.event-details p {
+    font-size: 1em;
+    color: #555;
+    margin: 5px 0;
+}
+
+.event-descriptionContainer {
+    margin: 10px 0;
+    background-color: #f7f9fc;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.event-date-time span,
+.event-venue,
+.event-organizers,
+.event-capacity,
+.registration-deadline {
+    display: block;
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.registerEventBtn {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #20b2aa;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.registerEventBtn:hover {
+    background-color: #2e8b57;
+    transform: translateY(-2px);
+}
+
+.ShowOppsMessageContainer {
+    text-align: center;
+    padding: 40px;
+    font-size: 1.5em;
+    color: #999;
+}
+dialog{
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #2e8b57;
+    color: white;
+}
+dialog a {
+    padding: 5px;
+    border-radius: 10px;
+    background-color: #2e668b;
+    color: white;
+}
+.DialogAlert{
+    display: none;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid black;
+    position : absolute;
+    top: 10px;
+    right: 10px;
+    background-color: lightsalmon;
+    color: white;
+}
+.ErrorAlert{
+    background-color: brown;
+}
+.mainMyEventContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.myEventsBtn{
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    display: inline;
+    margin: 5px;
+    cursor: pointer;
+}
+.deregister{
+    background-color: rgb(190, 50, 96);
+}
+.moreInfo{
+    background-color: lawngreen;
+}
+.updateProfileForm {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+}
+
+.updateProfileForm input[type="email"],
+.updateProfileForm input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+.updateProfileForm input[type="email"]:disabled {
+    background-color: #eee;
+    color: #666;
+}
+
+.updateProfileForm input[type="email"]:focus,
+.updateProfileForm input[type="password"]:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.updateProfileFormBtn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    background-color: rgb(42, 149, 134);
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.updateProfileFormBtn:hover {
+    background-color: rgb(42, 149, 134);
+}
+
+#passwordFieldContainer {
+    display: none;
+}
+
+.ShowPasswordFields {
+    display: block;
+}
+
+.updateProfileForm button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.updateProfileForm button:active {
+    transform: scale(0.98);
+}
+

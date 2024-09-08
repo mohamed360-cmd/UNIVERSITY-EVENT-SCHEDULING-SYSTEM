@@ -16,7 +16,7 @@
                 <img alt="ku Logo" src="../../Images/KU_logo.png"/>
             </div>
             <button class="navigationBtns" id="goToEventsPageBtn">Events</button>
-            <button class="navigationBtns" id="gotToUsersPageBtn">Users</button>
+            <button class="navigationBtns" onclick="gotToUsersPage()">Users</button>
             <button class="navigationBtns" id="goToAccountsPageBtn">Your Account</button>
             <button class="navigationBtns" id="LogOutButton" onclick="logout()">Logout</button>
         </div>
@@ -27,6 +27,8 @@
             @yield('content')
         </div>
     </div>
+    <div  class="DialogAlert SuccessAlert" id="successDialogAlert"> <p id="successDialogMessage">{{session("SuccessMsg")}}</p></div>
+    <div  class="DialogAlert ErrorAlert" id="errorDialogAlert"> <p id="ErrorDialogMessage">{{session("ErrorMsg")}}</p></div>
     <script src="../../js_files/admin_js/Dashboard.js"></script>
 </body>
 </html>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\users;
 use  App\Models\event;
+use App\Models\event_register;
 use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use PhpParser\Node\Stmt\TryCatch;
@@ -13,8 +14,13 @@ class AdminController extends Controller
 {
     private function verifySession() {//this function is to verify the 
         if (isset($_COOKIE['session_id'])) {
-
-            return true;
+            //check the role of the session id assosication 
+            $sessionIdCheck = users::where("session_id",$_COOKIE['session_id'])->first();
+            if($sessionIdCheck->role == "ADMIN" && $sessionIdCheck->status == 'active'){
+                 return true;
+            }else{
+                return false;
+            }
         } else {
             return false;
         }
@@ -106,22 +112,29 @@ public function  addEvent(){//this is when the admin wants to add an event
 
     }
 }
-public function logout(){
-    if($this->verifySession()){
+public function logout() {
+    if ($this->verifySession()) {
         $session_id = $_COOKIE["session_id"];
-            users::where("session_id",$session_id)->update(["session_id"=>null]);
-            unset($_COOKIE['session_id']);
-            setcookie('session_id', " ", time() - 3600);
-            return redirect("/admin")->with("data","Logged out");
-    }else{
-        return redirect("/admin")->with("data","Session Expired Please Login");
+        
+        // Invalidate the session in the database
+        users::where("session_id", $session_id)->update(["session_id" => null]);
 
+        // Delete the cookie on the client-side
+        setcookie('session_id', '', time() - 3600, '/'); // Adjust path if needed
+        
+        // Redirect with a success message
+        return redirect("/admin")->with("data", "Logged out");
+    } else {
+        return redirect("/admin")->with("data", "Session Expired. Please Login");
     }
 }
+
 public function show($id){
     if($this->verifySession()){
         $specificEvent = event::where("id",$id)->firstOrFail();
-        return view('Admin.MoreEventOptions',["Event"=>$specificEvent]);
+        $eventregisteredUsers = event_register::where("event_id",$id)->get();
+
+        return view('Admin.MoreEventOptions',["Event"=>$specificEvent,"userList"=>$eventregisteredUsers]);
     }else{
         return redirect("/admin")->with("data","Session Expired Please Login");
 
@@ -177,6 +190,30 @@ public function searchEvent(){
         }
     }else{
         return redirect("/admin")->with("data","Session Expired Please Login");
+    }
+}
+public function showUsers(){
+    if($this->verifySession()){
+        $userList = users::all();
+        return view("Admin.Users",["Users"=>$userList]);
+    }else{
+        return redirect("/admin")->with("data","Session Expired Please Login"); 
+    }
+}
+public function suspendAccount($id){
+    if($this->verifySession()){
+        $suspendAccountResults = users::where('id',$id)->update(['status'=> "suspended"]);
+        return redirect('/admin/users')->with("SuccessMsg","Account Has Been Suspended");
+    }else{
+        return redirect("/admin")->with("data","Session Expired Please Login"); 
+    }
+}
+public function activateAccount($id){
+    if($this->verifySession()){
+        $activateAccountResults = users::where('id',$id)->update(['status'=> "active"]);
+        return redirect('/admin/users')->with("SuccessMsg","Account Has Been Activated");
+    }else{
+        return redirect("/admin")->with("data","Session Expired Please Login"); 
     }
 }
 }

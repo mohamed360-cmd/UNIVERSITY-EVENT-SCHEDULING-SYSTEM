@@ -1,0 +1,90 @@
+*{
+    padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+}
+.userMainAuthContainer{
+    display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+width: 100vw;
+flex-direction: column;
+}
+.AuthLogoContainer{
+    height: 20%;
+    width: 20%;
+    object-fit: contain;
+}
+.AuthLogoContainer img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+
+/* Form Styling */
+.userAuthForm {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Input Fields */
+.userformInputs {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+}
+
+.userformInputs:focus {
+    border-color: #20b2aa;
+    outline: none;
+}
+
+/* Submit Button */
+.userFormSubmite {
+    width: 100%;
+    padding: 15px;
+    background-color: #20b2aa;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.userFormSubmite:hover {
+    background-color: #2e8b57;
+    transform: translateY(-2px);
+}
+
+/* Register Section */
+span {
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #666;
+}
+
+.userRegisterBtn {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: transparent;
+    border: 2px solid #20b2aa;
+    border-radius: 8px;
+    color: #20b2aa;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.userRegisterBtn:hover {
+    background-color: #20b2aa;
+    color: white;
+}
