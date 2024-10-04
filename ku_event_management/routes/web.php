@@ -31,5 +31,7 @@ Route::post('/deregister',"App\Http\Controllers\UserController@deregister");
 Route::get('/moreinfo/{id}',"App\Http\Controllers\UserController@showEvent");
 Route::get('/myAccount',"App\Http\Controllers\UserController@showAccount");
 Route::post('/myAccount',"App\Http\Controllers\UserController@updateAccount");
+Route::get('/logout','App\Http\Controllers\UserController@logout');
+
 
 

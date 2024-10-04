@@ -3,7 +3,7 @@
     <div class="mainEventsDisplayContainer">
         @if(count($Events) > 0){{--This will check if their is any event --}}
         @foreach ($Events as $event)
-        <form class="event-container" id="registerEventForm">
+        <form class="event-container" id="registerEventForm{{$event->id}}">
             @csrf
             <div class="HomelogoContainer">
                 <img src="../../Images/KU_logo.png" alt="Logo"/>
@@ -27,7 +27,7 @@
                 <p class="registration-deadline">Registration Deadline: {{$event->registration_Deadline}}</p>
             </div>
             @if($AuthStatus)
-            <button type="button" class="registerEventBtn" onclick="registerUserForEvent()">Register for this Event </button>
+            <button type="button" class="registerEventBtn" onclick="registerUserForEvent({{$event->id}})">Register for this Event </button>
             @else 
             <button type="button" class="registerEventBtn" onclick="showLoginDialog()">🔒Register for this Event </button>
             @endif

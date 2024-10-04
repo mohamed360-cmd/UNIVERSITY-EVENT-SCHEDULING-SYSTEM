@@ -25,6 +25,7 @@
             <button class="userAuthBtns userRegisterBtn" onclick="gotToHomePage()">Home</button>
             <button class="userAuthBtns userLoginBtn" onclick="gotMyEventsPageBtn()">YourEvents</button>
             <button class="userAuthBtns userRegisterBtn" onclick="gotMyAccountPageBtn()">MyProfile</button>
+            <button class="userAuthBtns logoutBtn" onclick="logoutBtn()">Logout</button>
         </div>
         @endif
     </div>

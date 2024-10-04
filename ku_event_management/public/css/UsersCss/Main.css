@@ -12,7 +12,9 @@ body {
     color: #333;
     line-height: 1.6;
 }
-
+.logoutBtn{
+    background-color: rgb(226, 56, 14);
+}
 /* Navbar Styling */
 .NavBar {
     display: flex;

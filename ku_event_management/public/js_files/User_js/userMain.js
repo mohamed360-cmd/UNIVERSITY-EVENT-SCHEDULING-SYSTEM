@@ -1,8 +1,9 @@
-const registerUserForEvent = ()=>{
+const registerUserForEvent = (eventId)=>{
 
-    const registerEventForm = document.getElementById('registerEventForm')
+    const registerEventForm = document.getElementById('registerEventForm' + eventId);
     registerEventForm.setAttribute('action',"/registerEvent")
     registerEventForm.setAttribute('method','POST')
+    //console.log(registerEventForm)
     registerEventForm.submit()
 }
 const showLoginDialog = ()=>{
@@ -72,4 +73,7 @@ function updateProfile (){
     updateProfileForm.setAttribute('action','/myAccount')
     updateProfileForm.setAttribute('method', 'POST')
     updateProfileForm.submit()
+}
+function logoutBtn(){
+    window.location.href = "/logout"
 }

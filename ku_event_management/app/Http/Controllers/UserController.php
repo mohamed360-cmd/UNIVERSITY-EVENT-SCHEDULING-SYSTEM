@@ -108,6 +108,8 @@ class UserController extends Controller
                 ->where("event_id", $eventId) // Make sure event_id is used to check for a specific event
                 ->where("registaration_status", "Active")
                 ->first();
+                error_log($eventId);
+
                 if(!$checkRegistrationStatus){
                 $table = new event_register();
                 $table->email = $email;
@@ -176,6 +178,15 @@ class UserController extends Controller
             }else{
                 return redirect("/myAccount")->with("ErrorMsg","Password not the Same");
             }
+        }else{
+            return redirect("/")->with("ErrorMsg","Session Ended , Log in");
+        }
+    }
+    public function logout(){
+        if($this->checkSession()){
+            $deleteSesssionResult = users::where("session_id",$_COOKIE["session_id"])->update(["session_id"=>null]);
+            setcookie('session_id', '', time() - 3600, '/');
+            return redirect("/")->with("SuccessMsg","Loged out");
         }else{
             return redirect("/")->with("ErrorMsg","Session Ended , Log in");
         }
