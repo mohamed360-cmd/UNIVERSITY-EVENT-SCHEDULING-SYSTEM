@@ -79,17 +79,22 @@ const deleteEventBtn = ()=>{
  eventSuccessmsgFunction()
  eventErrormsgFunction()
 
- const searchEvent = () => {
+function searchEvent  () {
     const eventSearchForm = document.getElementById('eventSearchForm');
     eventSearchForm.setAttribute("action", "/admin/event/searchEvent");
     eventSearchForm.setAttribute("method", "POST");
     eventSearchForm.submit();
+    console.log(eventSearchForm)
 };
  
-eventSearchBtn.addEventListener('click',searchEvent)
+
+//eventSearchBtn.addEventListener('click',searchEvent)
 
 function gotToUsersPage (){
     window.location.href = "/admin/users"
+}
+function redirectToDashboard (){
+    window.location.href = "/admin/dashboard"
 }
 function suspendAccount(button){
   const userId = button.getAttribute("data-user-id")

@@ -3,13 +3,14 @@
         @section('navContent')
         <h3>Kenyata University Events</h3>
         <form class="SearchContainer" id="eventSearchForm" >
+            @csrf
             <input placeholder="Search Event by name" type="text" name="searchEventName" />
-            <button class="eventSearchBtn" type="button" id="eventSearchBtn">Search</button>
+            <button class="eventSearchBtn" type="button" id="eventSearchBtn" onclick="searchEvent()">Search</button>
         </form>
         <div class="eventFilterContainer">
-            <button class="eventFilterBtn">All Events</button>
-            <button class="eventFilterBtn">Up Coming</button>
-            <button class="eventFilterBtn">Past Events</button>
+            <button class="eventFilterBtn" onclick="redirectToDashboard()">All Events</button>
+            {{-- <button class="eventFilterBtn">Up Coming</button>
+            <button class="eventFilterBtn">Past Events</button> --}}
         </div>
         @endSection
     <div class="MainEventDisplayContainer" >

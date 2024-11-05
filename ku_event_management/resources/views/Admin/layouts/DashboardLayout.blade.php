@@ -17,7 +17,7 @@
             </div>
             <button class="navigationBtns" id="goToEventsPageBtn">Events</button>
             <button class="navigationBtns" onclick="gotToUsersPage()">Users</button>
-            <button class="navigationBtns" id="goToAccountsPageBtn">Your Account</button>
+            {{-- <button class="navigationBtns" id="goToAccountsPageBtn">Your Account</button> --}}
             <button class="navigationBtns" id="LogOutButton" onclick="logout()">Logout</button>
         </div>
         <div class="contentContainer">

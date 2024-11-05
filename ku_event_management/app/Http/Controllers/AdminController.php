@@ -178,20 +178,25 @@ public function deleteEvent (){
         return redirect("/admin")->with("data","Session Expired Please Login");
     }
 }
-public function searchEvent(){
-    if($this->verifySession()){
+public function searchEvent() {
+    if ($this->verifySession()) {
         $eventName = request('searchEventName');
-        try{
-            $event = event::where("event_Name",$eventName)->firstOrFail();
-            view("Admin.Event",["eventList"=>$event,"status"=>true]);
-        }catch(Exception $e){
-            error_log($e);
-            return view("Admin.Event",["eventList"=>$event,"status"=>false]);
+        try {
+            $event = Event::where("event_Name", $eventName)->first();
+            if (!$event) {
+                return redirect("/admin/dashboard")->with("data", "Event Not Found");
+            }
+            error_log($event);
+            return view("Admin.event", ["eventList" => [$event], "status" => true]);
+        } catch (Exception $e) {
+            error_log("Search Error: " . $e->getMessage());
+            return redirect("/admin/dashboard")->with("data", "An error occurred during search");
         }
-    }else{
-        return redirect("/admin")->with("data","Session Expired Please Login");
+    } else {
+        return redirect("/admin")->with("data", "Session Expired, Please Login");
     }
 }
+
 public function showUsers(){
     if($this->verifySession()){
         $userList = users::all();
