@@ -80,9 +80,9 @@ public function dashboard(){//this function is when the user navigates to teh da
 }
 public function  addEvent(){//this is when the admin wants to add an event 
     if($this->verifySession()){
-        $userSessionToken  = $_COOKIE['session_id'];
-        $sessionQuery = users::where("session_id",$userSessionToken)->firstOrFail();
-
+        $userSessionToken = $_COOKIE['session_id'];
+        $sessionQuery = users::where("session_id", $userSessionToken)->firstOrFail();
+        
         $eventName = request('eventName');
         $eventDescription = request('eventDescription');
         $eventDate = request('eventDate');
@@ -92,8 +92,18 @@ public function  addEvent(){//this is when the admin wants to add an event
         $capacity = request('capacity');
         $eventType = request('eventType');
         $registrationDeadline = request('registrationDeadline');
-    
-
+        
+        // Check for existing event on the same day and venue
+        $existingEvent = event::where('event_Date', $eventDate)
+            ->where('event_Venue', $eventVenue)
+            ->first();
+        
+        if ($existingEvent) {
+            // Redirect back with an error message if conflict is found
+            return redirect('/admin/dashboard')->with("data","An event is already scheduled on the same day and venue. Please choose a different date or venue");
+        }
+        
+        // If no conflict, save the event
         $table = new event();
         $table->event_Name = $eventName;
         $table->event_Description = $eventDescription;
@@ -106,7 +116,9 @@ public function  addEvent(){//this is when the admin wants to add an event
         $table->event_Type = $eventType;
         $table->user_id = $sessionQuery->id;
         $table->save();
-       return redirect('/admin/dashboard')->with("msg","Event Succesfuly Created");
+        
+        return redirect('/admin/dashboard')->with("msg", "Event Successfully Created");
+        
     }else{
         return redirect("/admin")->with("data","Session Expired Please Login");
 
